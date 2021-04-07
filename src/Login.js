@@ -30,17 +30,22 @@ function Login(props) {
       setError("Something went wrong. Please try again later.");
     }
   }
+  const onEnter = (event) => {
+    if(event.key === 'Enter') {
+      handleLogin();
+    }
+  }
 
   return (
     <div>
       Login<br /><br />
       <div>
-        Username<br />
-        <input type="text" {...username} autoComplete="new-password" />
+        User Name<br />
+        <input type="text" {...username} autoComplete="new-password" onKeyUp={onEnter}/>
       </div>
       <div style={{ marginTop: 10 }}>
         Password<br />
-        <input type="password" {...password} autoComplete="new-password" />
+        <input type="password" {...password} autoComplete="new-password" onKeyUp={onEnter}/>
       </div>
       {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
       <input type="button" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
