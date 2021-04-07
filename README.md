@@ -5,4 +5,4 @@ Follow below steps to run project
 
 1. Clone repository
 2. ** Only first time : Run `npm i` command to install dependencies  
-3. ** To Run the server : Execute `npm start` command to run the project 
+3. Execute `npm start` command to run the server 
