@@ -1,13 +1,13 @@
 import React from 'react';
 import ProductCatalog from './ProductCatalog';
-import { getUser, removeUserSession } from './Utils/Common';
+import { getUser } from './Utils/Common';
 
 function Dashboard(props) {
   const user = getUser();
 
   return (
     <div>
-      Welcome {user}!<br /><br />
+      Welcome {user}!<br />
       <ProductCatalog/>
     </div>
   );

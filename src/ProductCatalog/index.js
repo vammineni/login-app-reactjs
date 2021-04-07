@@ -2,6 +2,10 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid';
 import BaseMaterialTable from '../MaterialTable';
 import { MTableToolbar } from 'material-table';
+import { Link } from '@material-ui/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearchPlus } from '@fortawesome/free-solid-svg-icons';
+import { BaseSwipeableDrawer, BaseDrawerContent } from '../Components/Drawer/BaseDrawer';
 
 function ProductCatalog() {
     const columns = [{
@@ -17,25 +21,44 @@ function ProductCatalog() {
     }, {
         title: "Price",
         field: "price",
-        type:"integer",
-        currency:'$'
+        type:"currency"
     }, {
         title: "Discount Price",
         field: "discountPrice",
+        type:"currency"
     }, {
         title: "Cover Image",
         field: "coverImage",
         sorting:false,
         filtering:false,
         render: rowData => (
-          <img
-            style={{ height: 36, borderRadius: '50%' }}
-            src={rowData.coverImage}
-          />
+        //   <img
+        //     style={{ height: 36, borderRadius: '50%' }}
+        //     src={rowData.coverImage}
+        //   />
+        <Link onClick={() => {showCoverImage(rowData)}} style={{cursor:'pointer'}}> <FontAwesomeIcon icon={faSearchPlus}></FontAwesomeIcon></Link> 
         ),
     }
     ];
+    const [selectedProduct, setSelectedProduct] = React.useState({});
 
+
+    const [openConfigDrawer, setOpenConfigDrawer] = React.useState(false);
+    const showCoverImage = (rowData) => {
+        setOpenConfigDrawer(true);
+        setSelectedProduct(rowData);
+    }
+
+    const toggleDrawer = (open) => (event) => {
+        if (event && event.type === 'click' && 'MuiBackdrop-root' === event.target.className) {
+          return;
+        }
+        if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+          return;
+        }
+    
+        setOpenConfigDrawer(open);
+      };
     return (
         <>
             <Grid container >
@@ -105,6 +128,25 @@ function ProductCatalog() {
                     }}
                 />
             </Grid>
+            <Grid container>
+            <BaseSwipeableDrawer
+            open={openConfigDrawer}
+            anchor='right'
+            onClose={toggleDrawer(false)}
+            onOpen={toggleDrawer(true)}>
+                <BaseDrawerContent
+                    anchor='right'
+                    drawerTitle={selectedProduct.name}
+                    toggleDrawer={toggleDrawer}
+                    drawerContent={ <img
+                            alt={''} 
+                            style={{ height: '100%', width:'auto'}}
+                            src={'images/' + selectedProduct.coverImage}
+                          />}
+                    customDialogActions={false}
+                />
+            </BaseSwipeableDrawer>
+        </Grid>
         </>
     )
 }
@@ -112,44 +154,44 @@ const productCatalogSampleData = [{
     name: 'Product Name 1',
     isExpire: 'No',
     expiryDate: new Date(),
-    price: '1200.0 $',
-    discountPrice: '200.0 $',
-    coverImage: 'TODO'
+    price: 1200.0,
+    discountPrice: 200.0,
+    coverImage: 'product2.png'
 }, {
     name: 'Product Name 2',
     isExpire: 'Yes',
     expiryDate: new Date(),
-    price: '1200.0 $',
-    discountPrice: '200.0 $',
-    coverImage: 'TODO'
+    price: 1200.0,
+    discountPrice: 200.0,
+    coverImage: 'product1.png'
 }, {
     name: 'Product Name 3',
     isExpire: 'No',
     expiryDate: new Date(),
-    price: '1500.0 $',
-    discountPrice: '200.0 $',
-    coverImage: 'TODO'
+    price: 1500.0,
+    discountPrice: 200.0,
+    coverImage: 'product2.png'
 },{
     name: 'Product Name 4',
     isExpire: 'No',
     expiryDate: new Date(),
-    price: '1200.0 $',
-    discountPrice: '200.0 $',
-    coverImage: 'TODO'
+    price: 1200.0,
+    discountPrice: 200.0,
+    coverImage: 'product1.png'
 }, {
     name: 'Product Name 5',
     isExpire: 'Yes',
     expiryDate: new Date(),
-    price: '1200.0 $',
-    discountPrice: '200.0 $',
-    coverImage: 'TODO'
+    price: 1200.0,
+    discountPrice: 200.0,
+    coverImage: 'product2.png'
 }, {
     name: 'Product Name 6',
     isExpire: 'No',
     expiryDate: new Date(),
-    price: '15700.0 $',
-    discountPrice: '200.0 $',
-    coverImage: 'TODO'
+    price: 15700.0,
+    discountPrice: 200.0,
+    coverImage: 'product1.png'
 },
 ];
 export default ProductCatalog;

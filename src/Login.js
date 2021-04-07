@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { setUserSession } from './Utils/Common';
 
 function Login(props) {
@@ -21,7 +21,7 @@ function Login(props) {
     //   if (error.response.status === 401) setError(error.response.data.message);
     //   else setError("Something went wrong. Please try again later.");
     // });
-    if(username.value === 'TestUser' && password.value === 'TestUser') {
+    if(username.value === 'TestUser' && password.value === 'TestUser123') {
       setLoading(false);
       setUserSession('token-test', username.value);
       props.history.push('/dashboard');
