@@ -7,4 +7,4 @@ Follow below steps to run project
 2. ** Only first time : Run `npm i` command to install dependencies  
 3. Execute `npm start` command to run the server 
 
-4. Use TestUser/TestUser123 for login
+4. User Name: TestUser, Pwd: TestUser123 for login
