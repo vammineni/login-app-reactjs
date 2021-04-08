@@ -9,6 +9,7 @@ import Dashboard from './Dashboard';
 import PrivateRoute from './Utils/PrivateRoute';
 import PublicRoute from './Utils/PublicRoute';
 import { getToken, removeUserSession, /*setUserSession*/ } from './Utils/Common';
+import DashboardStore from './DashboardStore';
 
 function App() {
   // const [authLoading, setAuthLoading] = useState(true);
@@ -44,8 +45,9 @@ function App() {
         <div>
           <div className="header">
             {/* <NavLink exact activeClassName="active" to="/">Home</NavLink> */}
-            <NavLink activeClassName="active" to="/login">Login</NavLink><small>(Access without token only)</small>
-            <NavLink activeClassName="active" to="/dashboard">Dashboard</NavLink><small>(Access with token only)</small>
+            <NavLink activeClassName="active" to="/login">Login</NavLink><small> (Access without token only)</small>
+            <NavLink activeClassName="active" to="/dashboard">Dashboard Model 1</NavLink><small> (Access with token only)</small>
+            <NavLink activeClassName="active" to="/dashboardModel2">Dashboard Model 2</NavLink><small> (Access with token only)</small>
             <NavLink activeClassName="active" to="/" onClick={handleLogout} >Logout</NavLink>
             
           </div>
@@ -53,7 +55,8 @@ function App() {
             <Switch>
               <Route exact path="/" component={Login} />
               <PublicRoute path="/login" component={Login} />
-              <PrivateRoute path="/dashboard" component={Dashboard} />
+              <PrivateRoute path="/dashboard" component={DashboardStore} />
+              <PrivateRoute path="/dashboardModel2" component={Dashboard} />
             </Switch>
           </div>
         </div>
