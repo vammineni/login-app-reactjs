@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         padding: '5px 10px',
         backgroundColor: '#EEE',
         marginRight: '5px',
-        borderRadius: '20px'
+        borderRadius: '5px'
     },
     removeFilter: {
         padding: '0px 5px',
@@ -91,8 +91,8 @@ const RenderAppliedFilters = ({ ...props }) => {
             { filters.length > 0 && <Grid container direction={'row'} style={{ margin: '10px 0px' }}>
                 {
                 filters.map(([k, value]) => 
-                    <span key={k} className={classes.appliedFilter}>
-                        {(filterMap[k] ? filterMap[k] : k)} <b> contains </b> {value}
+                    value && <span key={k} className={classes.appliedFilter}>
+                        {(filterMap[k] ? filterMap[k] : k)} <b> {k!=='price' ? ' contains ' : ' between '} </b> {(value.join ? value.join(" - ") : value.toString())}
                         <span
                             onClick={() => {
                                 props.updateFilters({filterBy:k, filterValue:value}, true)

@@ -64,7 +64,6 @@ function ProductCatalogDashboard() {
     
     const productsSelector = useSelector(state => state.products);
     const dispatch = useDispatch();
-    console.warn(productsSelector);
     
     useEffect(() => {
         let data = productCatalogDashboardData;

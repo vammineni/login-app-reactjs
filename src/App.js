@@ -10,6 +10,7 @@ import PrivateRoute from './Utils/PrivateRoute';
 import PublicRoute from './Utils/PublicRoute';
 import { getToken, removeUserSession, /*setUserSession*/ } from './Utils/Common';
 import DashboardStore from './DashboardStore';
+import LoginNew from './LoginNew';
 
 function App() {
   // const [authLoading, setAuthLoading] = useState(true);
@@ -53,8 +54,8 @@ function App() {
           </div>
           <div className="content">
             <Switch>
-              <Route exact path="/" component={Login} />
-              <PublicRoute path="/login" component={Login} />
+              <Route exact path="/" component={LoginNew} />
+              <PublicRoute path="/login" component={LoginNew} />
               <PrivateRoute path="/dashboard" component={DashboardStore} />
               <PrivateRoute path="/dashboardModel2" component={Dashboard} />
             </Switch>

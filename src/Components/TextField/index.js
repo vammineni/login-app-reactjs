@@ -16,7 +16,7 @@ export function BaseTextField(props) {
         required 
         type='text' 
         size='small'
-        placeholder="Select" 
+        placeholder="Enter" 
         InputLabelProps={{
             shrink: true
         }}
