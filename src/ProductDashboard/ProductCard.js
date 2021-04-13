@@ -39,9 +39,9 @@ export default function ProductCard(props) {
           </Typography>
           <Typography variant="subtitle1" component="h4">
             ${product.price}
-          </Typography>
-          <Typography variant="subtitle1" component="h4"  style={{textDecorationLine: 'line-through', textDecorationStyle: 'solid'}}>
+          <span style={{textDecorationLine: 'line-through', textDecorationStyle: 'solid', fontSize:'14px', marginLeft: '10px'}}>
                ${product.discountPrice}
+          </span>
           </Typography>
         </CardContent>
       </CardActionArea>
