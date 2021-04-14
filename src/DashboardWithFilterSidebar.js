@@ -76,7 +76,7 @@ function DashboardWithFilterSidebar() {
   const [sidebar, setSidebar] = useState(true);
 
   const showSidebar = () => setSidebar(!sidebar);
-  const [selected, setSelected] = useState(getSelectedSidebarItem());
+  const [selected/*, setSelected*/] = useState(getSelectedSidebarItem());
 
   const [inputs, setInputs] = React.useState(defaultFilters);
 
@@ -123,9 +123,7 @@ function DashboardWithFilterSidebar() {
             <PageHeader title={pageHeaders[selected.category] + (pageHeaders[selected.category] !== selected.title ? ' -> ' + selected.title : '')} />
           </Grid>
           <Grid style={{ padding: '5px' }}>
-            <div>
               <ProductCatalogDashboard data={productsSelector.data} appliedFilters={appliedFilters} updateFilters={updateFilters} />
-            </div>
           </Grid>
         </Grid>
       </Grid>

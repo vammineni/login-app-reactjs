@@ -25,7 +25,8 @@ function ProductCatalogDashboard({ data, appliedFilters, updateFilters }) {
                             xl={3}
                             lg={3}
                             md={4}
-                            style={{ padding: '10px' }} >
+                            style={{ padding: '10px' }} 
+                            >
                             <ProductCard product={product} />
                         </Grid>
                     )}

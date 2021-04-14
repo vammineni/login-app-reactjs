@@ -1,14 +1,13 @@
 
 import React, { useState } from "react";
-import CustomInput from './Components/Input/CustomInput';
 import Button from './Components/ButtonNew/Button';
-//import "./styles.css";
 
 import { makeStyles } from '@material-ui/styles';
 
 // import axios from 'axios';
 import { setUserSession } from './Utils/Common';
 import PublicAppBar from "./Sidebar/PublicAppBar";
+import { Grid, TextField } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -41,7 +40,7 @@ function LoginNew(props) {
 
   const handleChange = e => {
     setLogin({...login, [e.currentTarget.id]: e.currentTarget.value });
-    onEnter(e);
+    //onEnter(e);
   };
 
   // handle button click of login form
@@ -76,28 +75,42 @@ function LoginNew(props) {
     <div className={classes.app}>
         <PublicAppBar/>
         <form className={classes.form}>
-          <CustomInput
-            labelText="User Name"
-            id="userName"
-            formControlProps={{
-              fullWidth: true
-            }}
-            handleChange={handleChange}
-            type="text"
-            value={login.userName}
-          />
-          <CustomInput
-            labelText="Password"
-            id="password"
-            formControlProps={{
-              fullWidth: true
-            }}
-            handleChange={handleChange}
-            type="password"
-            value={login.password}
-          />
-          {error && <><small style={{ color: 'red' }}>{error}</small></>}
-          <Button type="button" color="primary"
+          <Grid container alignItems="flex-start" spacing={2}>
+                <Grid item xs={12} style={{  margin:'10px 0px' }}>
+                  <TextField
+                      id='userName'
+                      onChange={handleChange}
+                      value={login.userName}
+                      placeholder='Enter User Name'
+                      variant="outlined"
+                      InputLabelProps={{
+                        shrink: true
+                      }}
+                      type="text"
+                      label="User Name"
+                      size="small"
+                      onKeyUp={onEnter}
+                      style={{ width: '100%' }} />
+                </Grid>
+                <Grid item xs={12} style={{  margin:'10px 0px' }}>
+                  <TextField
+                      id='password'
+                      onChange={handleChange}
+                      value={login.password}
+                      placeholder='Enter Password'
+                      variant="outlined"
+                      InputLabelProps={{
+                        shrink: true
+                      }}
+                      type="password"
+                      label="Password"
+                      size="small"
+                      onKeyUp={onEnter}
+                      style={{ width: '100%' }} />
+                </Grid>
+              </Grid>
+          {error && <><small style={{ color: 'red', margin:'10px' }}>{error}</small></>}
+          <Button type="button" color="primary" disabled={loading}
            onClick={handleLogin} >
             Log in
           </Button>

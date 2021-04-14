@@ -35,7 +35,7 @@ export default function ProductCard(props) {
                 {product.name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {product.isExpire ? 'Expired' : 'Expire By: ' + product.expiryDate.toLocaleDateString()}
+            {product.isExpire ? 'Expired' : 'Expiry By: ' + product.expiryDate.toLocaleDateString()}
           </Typography>
           <Typography variant="subtitle1" component="h4">
             ${product.price}
@@ -46,7 +46,7 @@ export default function ProductCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary"  style={{textTransform:'none'}}>
           Read More
         </Button>
       </CardActions>
